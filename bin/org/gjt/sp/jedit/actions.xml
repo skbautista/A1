@@ -1194,6 +1194,13 @@
 	</CODE>
 </ACTION>
 
+<ACTION NAME="show-hide-whitespace">
+	<CODE>
+		textArea.checkSymbolButton();
+		textArea.switchAllSymbols();
+	</CODE>
+</ACTION>
+
 <ACTION NAME="spaces-to-tabs">
 	<CODE>
 		textArea.spacesToTabs();

@@ -807,6 +807,11 @@ public class TextAreaPainter extends JComponent implements TabExpander
 	AntiAlias antiAlias;
 	boolean fracFontMetrics;
 
+	boolean hideSymbols = true;
+	public void showHideSymbols(){
+		hideSymbols = !hideSymbols;
+	}
+
 	// should try to use this as little as possible.
 	FontMetrics fm;
 	//}}}
@@ -823,6 +828,7 @@ public class TextAreaPainter extends JComponent implements TabExpander
 			| AWTEvent.MOUSE_EVENT_MASK);
 
 		this.textArea = textArea;
+		TextAreaPainter.PaintText temp = new PaintText();
 		antiAlias = new AntiAlias(0);
 		fonts = new HashMap();
 		extensionMgr = new ExtensionManager();
@@ -1171,13 +1177,17 @@ public class TextAreaPainter extends JComponent implements TabExpander
 			{
 				gfx.setFont(defaultFont);
 				gfx.setColor(eolMarkerColor);
-				gfx.drawString(".",x,baseLine);
+				if(!hideSymbols)
+					gfx.drawString(".",x,baseLine);
+				else
+					gfx.drawString("",x,baseLine);
 				x += textArea.charWidth;
 			}
 
 			lineInfo.width = (x - originalX);
 		}
 	} //}}}
+
 
 	//{{{ PaintCaret class
 	class PaintCaret extends TextAreaExtension

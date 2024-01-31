@@ -23,6 +23,7 @@
  */
 package org.gjt.sp.jedit.textarea;
 
+import org.gjt.sp.jedit.Buffer;
 import org.gjt.sp.jedit.input.InputHandlerProvider;
 import org.gjt.sp.jedit.input.AbstractInputHandler;
 import org.gjt.sp.jedit.input.DefaultInputHandlerProvider;
@@ -64,6 +65,7 @@ import java.util.*;
  */
 public class TextArea extends JComponent
 {
+	private boolean showSymbols;
 	//{{{ TextArea constructor
 	public TextArea()
 	{
@@ -120,6 +122,7 @@ public class TextArea extends JComponent
 		buffer.setTokenMarker(tokenMarker);
 		buffer.insert(0,"ahaha coucou\ncaca");
 		setBuffer(buffer);
+		showSymbols = true;
 	} //}}}
 
 	//{{{ TextArea constructor
@@ -5325,6 +5328,25 @@ loop:		for(int i = lineNo - 1; i >= 0; i--)
 		}
 	} //}}}
 
+	public void switchAllSymbols(){
+		if(!showSymbols && getBufferLength() >= 2){
+			for(int l = 0; l < getLineCount(); l++){
+				for(int c = 0; c < getLineEndOffset(l) - 2; c++){
+					if(buffer.getText(c, 2).compareTo("\\t") == 0){
+							buffer.remove(c, 2);
+							buffer.insert(c,  "\t");
+					}
+				}
+			}
+		}
+	}
+
+	public void checkSymbolButton()
+	{
+		showSymbols = !showSymbols;
+		painter.showHideSymbols();
+	}
+
 	//{{{ insertTab() method
 	private void insertTab()
 	{
@@ -5332,7 +5354,6 @@ loop:		for(int i = lineNo - 1; i >= 0; i--)
 		if(buffer.getBooleanProperty("noTabs"))
 		{
 			int lineStart = getLineStartOffset(caretLine);
-
 			String line = getText(lineStart,caret - lineStart);
 
 			int pos = 0;
@@ -5353,6 +5374,10 @@ loop:		for(int i = lineNo - 1; i >= 0; i--)
 
 			replaceSelection(StandardUtilities.createWhiteSpace(
 				tabSize - pos,0));
+		}
+		else if(showSymbols)
+		{
+			replaceSelection("\\t");
 		}
 		else
 			replaceSelection("\t");
