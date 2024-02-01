@@ -354,8 +354,8 @@ public class Log
 	//{{{ _log() method
 	private static void _log(int urgency, String source, String message)
 	{
-		String fullMessage = '[' + urgencyToString(urgency) + "] " + source
-			+ ": " + message;
+		String fullMessage = "{TimeStamp}: " + java.time.LocalTime.now() + " ["  + urgencyToString(urgency) + "] "
+			+ source + ": " + message;
 
 		try
 		{
