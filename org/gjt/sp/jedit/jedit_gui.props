@@ -469,7 +469,8 @@ next-fold.label=Go to $Next Fold
 #}}}
 
 #{{{ View menu
-view=new-view \
+view=new-view-buffer \
+     new-view \
      new-plain-view \
      close-view \
      show-hide-whitespace \
@@ -485,6 +486,7 @@ view=new-view \
      %splitting \
      %docking
 view.label=$View
+new-view-buffer.label= New View buffer
 new-view.label=New $View
 new-plain-view.label=Ne$w Plain View
 close-view.label=$Close View

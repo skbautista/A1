@@ -1656,6 +1656,43 @@ public class jEdit
 		return openFile(view,dir,"Untitled-" + (untitledCount+1),true,null);
 	} //}}}
 
+	public static View newViewBuffer(View view, Buffer buffer)
+	{
+		View.ViewConfig config = new View.ViewConfig(false);
+		View newView = newView(view, buffer, config);
+
+		String path;
+
+		path = newView.getBuffer().getDirectory();
+		VFS vfs = VFSManager.getVFSForPath(path);
+
+		// don't want 'New File' to create a read only buffer
+		// if current file is on SQL VFS or something
+		if((vfs.getCapabilities() & VFS.WRITE_CAP) == 0)
+			path = System.getProperty("user.home");
+
+		// Find the highest Untitled-n file
+		int untitledCount = 0;
+		Buffer bufferF = buffersFirst;
+		while(bufferF != null)
+		{
+			if(bufferF.getName().startsWith("Untitled-"))
+			{
+				untitledCount = Math.max(untitledCount,
+						Integer.parseInt(bufferF.getName()
+								.substring(9)));
+			}
+			bufferF = bufferF.next;
+		}
+
+		openFile(newView, path,"Untitled-" + (untitledCount+1),true,null);
+
+		newView.getTextArea().setSelectedText(
+				buffer.getText(0,buffer.getLength()));
+
+		return newView;
+	} //}}}
+
 	//}}}
 
 	//{{{ Buffer management methods
