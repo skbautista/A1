@@ -1693,6 +1693,26 @@ public class jEdit
 		return newView;
 	} //}}}
 
+	public static void increaseFont()
+	{
+		int size = jEdit.getIntegerProperty("view.fontsize",12) + 1;
+		jEdit.setIntegerProperty("view.fontsize",size);
+		jEdit.setIntegerProperty("view.gutter.fontsize",size);
+		jEdit.setIntegerProperty("console.fontsize",size);
+		jEdit.propertiesChanged();
+		jEdit.saveSettings();
+	} //}}}
+
+	public static void decreaseFont()
+	{
+		int size = jEdit.getIntegerProperty("view.fontsize",12) - 1;
+		jEdit.setIntegerProperty("view.fontsize",size);
+		jEdit.setIntegerProperty("view.gutter.fontsize",size);
+		jEdit.setIntegerProperty("console.fontsize",size);
+		jEdit.propertiesChanged();
+		jEdit.saveSettings();
+	} //}}}
+
 	//}}}
 
 	//{{{ Buffer management methods

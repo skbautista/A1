@@ -539,6 +539,18 @@
 	</CODE>
 </ACTION>
 
+<ACTION NAME="zoom-inc">
+	<CODE>
+		jEdit.increaseFont();
+	</CODE>
+</ACTION>
+
+<ACTION NAME="zoom-dec">
+	<CODE>
+		jEdit.decreaseFont();
+	</CODE>
+</ACTION>
+
 <ACTION NAME="next-bracket">
 	<CODE>
 		textArea.goToNextBracket(false);

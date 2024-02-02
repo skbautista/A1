@@ -469,7 +469,9 @@ next-fold.label=Go to $Next Fold
 #}}}
 
 #{{{ View menu
-view=new-view-buffer \
+view=zoom-inc \
+     zoom-dec \
+     new-view-buffer \
      new-view \
      new-plain-view \
      close-view \
@@ -487,6 +489,8 @@ view=new-view-buffer \
      %docking
 view.label=$View
 new-view-buffer.label= New View buffer
+zoom-inc.label= Zoom+
+zoom-dec.label= Zoom-
 new-view.label=New $View
 new-plain-view.label=Ne$w Plain View
 close-view.label=$Close View
