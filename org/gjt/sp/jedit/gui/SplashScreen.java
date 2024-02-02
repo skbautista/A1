@@ -62,9 +62,9 @@ public class SplashScreen extends JComponent
 		win.validate();
 		win.setVisible(true);
 
-		text = new Vector(2);
+		text = new Vector(50);
 		String animationText = "Ralph Louie Gregorio\n rbg619@usask.ca \n Sean Bautista \n spb762@usask.ca ";
-		StringTokenizer st = new StringTokenizer("Ralph Louie Gregorio\n rbg619@usask.ca", "\n");
+		StringTokenizer st = new StringTokenizer(animationText, "\n");
 		while(st.hasMoreTokens())
 		{
 			String line = st.nextToken();
@@ -155,6 +155,17 @@ public class SplashScreen extends JComponent
 		int lines = (getHeight() - TOP - BOTTOM) / height;
 
 		int y = firstLineOffset;
+
+		for(int i = 0; i <= lines; i++)
+		{
+			if(i + firstLine >= 0 && i + firstLine < text.size())
+			{
+				String line = (String)text.get(i + firstLine);
+				g.drawString(line,(maxWidth - fm.stringWidth(line))/2,y);
+			}
+			y += fm.getHeight();
+		}
+
 
 		// XXX: This should not be hardcoded
 		g.setColor(Color.white);
