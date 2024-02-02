@@ -3607,7 +3607,7 @@ public class jEdit
 				if(server != null)
 					server.start();
 
-				GUIUtilities.hideSplashScreen();
+//				GUIUtilities.hideSplashScreen();
 
 				Log.log(Log.MESSAGE,jEdit.class,"Startup "
 					+ "complete");
