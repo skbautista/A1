@@ -397,10 +397,15 @@ public class View extends JFrame implements EBComponent, InputHandlerProvider
 
 			searchBar.getField().setText(text);
 		}
-
 		searchBar.getField().requestFocus();
 		searchBar.getField().selectAll();
 	} //}}}
+
+	public boolean getAllMarkerOption;
+	public void setAllMarkers(){
+		this.getAllMarkerOption = true;
+		this.quickIncrementalSearch(true);
+	}
 
 	//{{{ quickHyperSearch() method
 	/**

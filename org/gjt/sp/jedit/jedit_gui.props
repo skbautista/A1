@@ -408,6 +408,7 @@ hypersearch-results.label=HyperSearch Results
 markers=add-marker \
 	  add-marker-shortcut \
 	  - \
+	  add-all-markers \
 	  remove-all-markers \
 	  - \
 	  goto-marker \
@@ -423,6 +424,7 @@ markers.code=new MarkersProvider();
 markers.label=$Markers
 add-marker.label=$Add/Remove Marker
 add-marker-shortcut.label=Add Marker $With Shortcut
+add-all-markers.label=Add All Markers
 remove-all-markers.label=Re$move All Markers
 goto-marker.label=$Go to Marker
 select-marker.label=$Select to Marker

@@ -50,6 +50,12 @@
 	</CODE>
 </ACTION>
 
+<ACTION NAME="add-all-markers">
+	<CODE>
+		view.setAllMarkers();
+	</CODE>
+</ACTION>
+
 <ACTION NAME="add-marker-shortcut" NO_REPEAT="TRUE" NO_RECORD="TRUE">
 	<CODE>
 		view.getInputHandler().readNextChar(

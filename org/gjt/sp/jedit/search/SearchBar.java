@@ -252,6 +252,8 @@ public class SearchBar extends JPanel
 					}
 				}
 			}
+			if(view.getAllMarkerOption)
+				view.getBuffer().addMarker('\0', view.getTextArea().getCaretPosition());
 		} //}}}
 	} //}}}
 
